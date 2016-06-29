@@ -6,7 +6,7 @@ swagger: '2.0'
 # This is your document metadata
 info:
   version: "1.0.0"
-  title: OBXML API
+  title: OBXMLS API
 
 # Describe your paths here
 paths:
@@ -33,6 +33,118 @@ paths:
           required: false
           type: number
           format: double
+        -
+          name: class
+          in: query
+          description: class of listing (residential, commercial, land)
+          required: false
+          type: string
+        -
+          name: bedrooms
+          in: query
+          description: number of bedrooms
+          required: false
+          type: integer
+          format: double
+        - 
+          name: bathrooms
+          in: query
+          description: number of bathrooms
+          required: false
+          type: integer
+          format: double
+        -
+          name: type
+          in: query
+          description: not sure what this is
+          required: false
+          type: string
+        -
+          name: areas
+          in: query
+          description: listing area
+          required: false
+          type: string
+        -
+          name: listing_date
+          in: query
+          description: date of listing
+          required: false
+          type: string 
+          format: date
+      # Expected responses for this operation:
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object.
+          # Use JSON Schema format
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Listing'
+  /listing/residential:
+    # This is a HTTP operation
+    get:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        Gets `Listing` objects.
+      # This is array of GET operation parameters:
+      parameters:
+        # An example parameter that is in query and is required
+        -
+          name: offset
+          in: query
+          description: Starting from for paging
+          required: false
+          type: number
+          format: double
+        -
+          name: limit
+          in: query
+          description: Number of Listingsfor paging
+          required: false
+          type: number
+          format: double
+        -
+          name: class
+          in: query
+          description: class of listing (residential, commercial, land)
+          required: false
+          type: string
+        -
+          name: bedrooms
+          in: query
+          description: number of bedrooms
+          required: false
+          type: integer
+          format: double
+        - 
+          name: bathrooms
+          in: query
+          description: number of bathrooms
+          required: false
+          type: integer
+          format: double
+        -
+          name: type
+          in: query
+          description: not sure what this is
+          required: false
+          type: string
+        -
+          name: areas
+          in: query
+          description: listing area
+          required: false
+          type: string
+        -
+          name: listing_date
+          in: query
+          description: date of listing
+          required: false
+          type: string 
+          format: date
       # Expected responses for this operation:
       responses:
         # Response code
@@ -72,8 +184,49 @@ paths:
 definitions:
   Listing:
     type: object
+    required:
+      - id
+    properties:
+      id:
+        type: integer
+      listing_date:
+        type: integer
+      price:
+        type: integer
+      address_number:
+        type: integer
+      address_street:
+        type: string
+      city:
+        type: string
+      state:
+        type: string
+      zip:
+        type: integer
+      baths:
+        type: integer
+      half_baths:
+        type: integer
+      bedrooms:
+        type: integer
+      type:
+        type: string
+      class:
+        type: string
+      area:
+        type: string
+      waterfront:
+        type: string
+      location:
+        type: string
+      organization:
+        type: string
+      listing_agent:
+        type: string
+      listing_agent2:
+        type: string
+        
   Organization:
     type: object
   User:
     type: object
-    

@@ -24,15 +24,15 @@ paths:
           in: query
           description: Starting from for paging
           required: false
-          type: number
-          format: double
+          type: integer
+          format: int32
         -
           name: limit
           in: query
           description: Number of Listingsfor paging
           required: false
-          type: number
-          format: double
+          type: integer
+          format: int32
         -
           name: class
           in: query
@@ -40,27 +40,34 @@ paths:
           required: false
           type: string
         -
+          name: price
+          in: query
+          description: price of home
+          required: false
+          type: number
+          format: double
+        -
           name: bedrooms
           in: query
           description: number of bedrooms
           required: false
           type: integer
-          format: double
+          format: int32
         - 
           name: bathrooms
           in: query
           description: number of bathrooms
           required: false
           type: integer
-          format: double
+          format: int32
         -
           name: type
           in: query
-          description: not sure what this is
+          description: The type of property for sale. Options vary depending on class. (single family home, condo, office, etc)
           required: false
           type: string
         -
-          name: areas
+          name: area
           in: query
           description: listing area
           required: false
@@ -72,6 +79,43 @@ paths:
           required: false
           type: string 
           format: date
+        -
+          name: waterfront_location
+          in: query
+          description: waterfront location (oceanfront, pondfront, canalfront, etc)
+          required: false
+          type: string
+        -
+          name: property_location
+          in: query
+          description: Property locations (semi-oceanfront, 2 - lots oceanfront, semi-soundfront, etc)
+          required: false
+          type: string
+        -
+          name: status
+          in: query
+          description: Status of property (active, sold co-op by member, sold in house, etc) 
+          required: false
+          type: string
+        - 
+          name: bank_owned
+          in: query
+          description: Whether a property is owned by the bank or not
+          required: false
+          type: boolean
+        -
+          name: shortsale
+          in: query
+          description: Whether a property is potentially available for shortsale
+          required: false
+          type: boolean
+        -
+          name: subdivision
+          in: query
+          description: What subdivision a property is on
+          required: false
+          type: string
+          
       # Expected responses for this operation:
       responses:
         # Response code
